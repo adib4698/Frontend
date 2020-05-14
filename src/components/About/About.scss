@@ -1,0 +1,11 @@
+.part1About {
+  display: flow-root;
+  background-image: url("topImage.jpg");
+  width: 100%;
+  height: 1000px;
+  background-position: center;
+  ::selection {
+    background: #f0c151;
+  }
+  background-attachment: fixed;
+}

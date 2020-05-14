@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,700;1,300&display=swap");
+.background {
+  overflow: hidden;
+}
+.upperText {
+  width: 40%;
+  text-align: left;
+  position: relative;
+  top: 5%;
+  left: 3%;
+  color: #fff;
+  font-size: 130px;
+  font-family: "Archivo Black", sans-serif;
+  line-height: 78%;
+  padding-top: 0px;
+}
+.lowerText {
+  text-align: left;
+  position: relative;
+  top: 0%;
+  left: 3.2%;
+  color: #f0c151;
+  font-size: 45px;
+  font-style: italic;
+  font-family: "Open Sans Condensed", sans-serif;
+  display: inline;
+  letter-spacing: 8px;
+  padding-top: 10px;
+}
+.logo {
+  position: absolute;
+  left: 3%;
+  top: 50px;
+  width: 7%;
+}
+
+.part1 {
+  display: flow-root;
+  background-image: url("topImage.jpg");
+  width: 100%;
+  height: 1000px;
+  background-position: center;
+  ::selection {
+    background: #f0c151;
+  }
+  background-attachment: fixed;
+}
+
+.lista {
+  width: 100%;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.table {
+  display: table;
+  margin: 0 auto;
+  margin-top: 50px;
+  float: right;
+}
+.li2 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 20px;
+  display: inline;
+  padding-left: 30px;
+  margin-left: 0%;
+}
+.li1 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 30px;
+  display: inline;
+  padding-right: 30px;
+}
+.menuButtons {
+  color: white;
+  text-decoration: none;
+  transition: 300ms;
+  &:hover {
+    color: #f0c151;
+  }
+}
+
+.part2 {
+  ::selection {
+    background: #f0c151;
+  }
+  display: flex;
+  justify-content: space-around;
+  height: 500px;
+}
+.menuBar {
+  width: 50%;
+  list-style-type: none;
+  padding-right: 0px;
+}
+
+.paragraphsHead {
+  position: relative;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 80px;
+  letter-spacing: 3px;
+  padding-bottom: 0%;
+  text-align: center;
+}
+
+.aboutParagraph {
+  position: relative;
+  font-size: 25px;
+  width: 30%;
+  text-align: center;
+  left: 4%;
+  height: 0px;
+}
+.imgAbout {
+  position: relative;
+  background-image: url("Coffee.jpg");
+  height: 400px;
+  top: 50px;
+}
+.textAbout {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}

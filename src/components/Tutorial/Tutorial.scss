@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+
+.baseContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1200px;
+  background-color: black;
+}
+
+.menuLeft{
+  width:15%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-top: 170px;
+  height: 90%;
+  background-color: white;
+}
+.displayElements{
+  width:85%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: white;
+  height: 90%;
+  margin-top: 170px;
+}
+.lista{
+  text-decoration: none;
+}
+.elementLista{
+  margin-top: 70px;
+  font-family: 'Jost', sans-serif;
+  color: #c7c7c7;
+  transition: 400ms;
+  &:hover{
+    color: #000000;
+  }
+}

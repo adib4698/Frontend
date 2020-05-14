@@ -1,0 +1,25 @@
+.base-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: -webkit-fill-available;
+  background-image: url("topImage.jpg");
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.register {
+  color: white;
+  transition: 300ms;
+  &:hover {
+    color: #f0c151;
+  }
+}
+.nav {
+  text-decoration: none;
+}

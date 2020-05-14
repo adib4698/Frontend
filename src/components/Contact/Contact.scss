@@ -1,0 +1,25 @@
+.base-containerContact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: -webkit-fill-available;
+  background-color: #2d2e2d;
+}
+
+.contentContact {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.registerContact {
+  color: white;
+  transition: 300ms;
+  &:hover {
+    color: #f0c151;
+  }
+}
+.navContact {
+  text-decoration: none;
+}

@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo {
+  left: 3%;
+  top: 50px;
+  width: 7%;
+}
+
+.lista {
+  width: 100%;
+  list-style-type: none;
+  padding-left: 0px;
+}
+.menu {
+  margin-top: 50px;
+  margin-bottom: -200px;
+  float: right;
+}
+.li2 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 20px;
+  display: inline;
+  padding-left: 30px;
+  margin-left: 0%;
+}
+.li1 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 30px;
+  display: inline;
+  padding-right: 30px;
+}
+.menuButtons {
+  color: white;
+  text-decoration: none;
+  transition: 300ms;
+  &:hover {
+    color: #f0c151;
+  }
+}
+.bottom {
+  display: flex;
+  width: 100%;
+  height: 400px;
+  background-color: black;
+  align-items: center;
+}
+
+.gridBottom {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 25%;
+  text-align: left;
+}
+
+.logoBottom {
+  width: 150px;
+  margin-top: 110px;
+  margin-bottom: 5px;
+  padding-left: 100px;
+}
+
+.socialMedia {
+  display: inline;
+  padding-bottom: 20px;
+  padding-left: 100px;
+}
+
+.socialIcon {
+  width: 20px;
+  padding-right: 30px;
+}
+
+.textCopyright {
+  color: white;
+  padding-left: 15px;
+  font-size: 13px;
+  padding-left: 100px;
+}
+
+.titleBottom {
+  margin-top: 120px;
+  padding-left: 20px;
+  display: flex;
+  font-family: "Bebas Neue", cursive;
+  letter-spacing: 3px;
+  font-size: 20px;
+  color: white;
+}
+.textBottom {
+  padding-left: 20px;
+  color: white;
+  text-align: left;
+}
