@@ -1,10 +1,25 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {tutorialAction} from "../../actions";
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Fade from "react-reveal/Fade";
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import "./Tutorial.scss";
+import {history} from "../../helpers/history";
+import ButtonBase from '@material-ui/core/ButtonBase';
+import {withStyles} from "@material-ui/core/styles";
+const CardNou = withStyles({
+      root: {
+        maxWidth: 400,
+      },
+  })(Card);
+
+
 class Tutorial extends Component {
 
   constructor(props){
@@ -19,27 +34,58 @@ class Tutorial extends Component {
   }
 
   render() {
+
     let {tutorials} = this.props;
-    return <div className="baseContainer">
+    return( <div className="baseContainer">
       <div className="menuLeft">
         <ul className="lista" onClick={(event)=>{this.updateSearchCategory(event)}}>
           <li id="Photoshop" className="elementLista">Photoshop</li>
-          <li id="2" className="elementLista">Lightroom</li>
-          <li id="3" className="elementLista">Premiere</li>
+          <li id="Lightroom" className="elementLista">Lightroom</li>
+          <li id="Premiere" className="elementLista">Premiere</li>
           <li className="elementLista">After Effects</li>
           <li className="elementLista">Illustrator</li>
         </ul>
       </div>
       <div className="displayElements">
         <Grid container spacing={2}>
-        {tutorials.items !== undefined && tutorials.items.map(tutorial => (
-            <Grid item xs={4}>
-             {tutorial.category === this.state.searchCategory && tutorial.title}
+        {tutorials.items !== undefined && tutorials.items.filter(tutorial => tutorial.category===this.state.searchCategory).map(tutorial => (
+
+            <Grid item xs={3}>
+               <div className="itemGrid">
+               <Fade>
+
+                 <CardNou>
+                   <ButtonBase
+                      onClick={event => {
+                        history.push("/TutorialView")
+                        alert("clicked "+tutorial.title) }}
+                   >
+                   <CardActionArea>
+                     <CardMedia
+                         component="img"
+                         alt="Contemplative Reptile"
+                         height="250"
+                         image={tutorial.tutorialProfile}
+                         title="Contemplative Reptile"
+                     />
+                     <CardContent>
+                       <Typography gutterBottom variant="h5" component="h2">
+                         {tutorial.title}
+                       </Typography>
+                     </CardContent>
+                   </CardActionArea>
+                 {/*<img src={require("./tutorialImages/Input.png")} className="imagine" />*/}
+                {/*<h2 className="titleTutorial">{tutorial.title}</h2>*/}
+                   </ButtonBase>
+                 </CardNou>
+             </Fade>
+             </div>
             </Grid>
         ))}
         </Grid>
       </div>
-    </div>;
+    </div>
+    )
   }
 
   updateSearchCategory(event) {

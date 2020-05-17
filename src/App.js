@@ -6,12 +6,13 @@ import { About } from "./components/About/About.jsx";
 import { Login } from "./components/Login/Login.jsx";
 import { Contact } from "./components/Contact/Contact.jsx";
 import { Register } from "./components/Register/Register.jsx";
+import { TutorialPage } from "./components/TutorialPage/TutorialPage.jsx"
 import { Tutorial } from "./components/Tutorial/Tutorial";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { BrowserRouter, NavLink } from "react-router-dom";
 import Fade from "react-reveal/Fade";
-import { createBrowserHistory } from "history";
-export const history = createBrowserHistory();
+import {history} from "./helpers/index"
+
 function App() {
   return (
     <div className="App">
@@ -77,6 +78,7 @@ function App() {
           <Route path="/Login" exact strict component={Login} />
           <Route path="/Register" exact strict component={Register} />
           <Route path="/Tutorial" exact strict component={Tutorial} />
+          <Route path="/TutorialView" exact strict component={TutorialPage}/>
         </Switch>
       </Router>
       <div className="bottom">
