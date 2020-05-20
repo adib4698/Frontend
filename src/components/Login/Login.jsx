@@ -4,7 +4,9 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "./Login.scss";
 import { BrowserRouter, NavLink } from "react-router-dom";
+import {userAction} from "../../actions/userAction";
 import { connect } from "react-redux";
+import {history} from "../../helpers";
 import {
   fade,
   ThemeProvider,
@@ -53,7 +55,7 @@ const CssTextField = withStyles({
   },
 })(TextField);
 
-export class Login extends Component {
+class Login extends Component {
   state = {};
   render() {
     return (
@@ -75,12 +77,12 @@ export class Login extends Component {
             autoComplete="current-password"
             color="#ffffff"
           />
-          <Button style={style} size="medium" type="submit">
+          <Button style={style} size="medium" type="submit" onClick={()=>(alert("clicked"))}>
             Login
           </Button>
           <BrowserRouter>
             <NavLink to="/Register" exact strict className="nav">
-              <p className="register">Not a member yet? Sign up here!</p>
+              <p onClick={()=>history.push("./Register")} className="register">Not a member yet? Sign up here!</p>
             </NavLink>
           </BrowserRouter>
         </div>
@@ -88,5 +90,15 @@ export class Login extends Component {
     );
   }
 }
-function mapStateToProps(state) {}
-export default connect(mapStateToProps)(Login);
+function mapState(state) {
+  const { loggingIn } = state.authentication;
+  return { loggingIn };
+}
+
+const actionCreators = {
+  login: userAction.login,
+  logout: userAction.logout
+};
+
+const connectedLoginPage = connect(mapState, actionCreators)(Login);
+export { connectedLoginPage as Login };

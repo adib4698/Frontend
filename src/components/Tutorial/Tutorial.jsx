@@ -13,6 +13,7 @@ import "./Tutorial.scss";
 import {history} from "../../helpers/history";
 import ButtonBase from '@material-ui/core/ButtonBase';
 import {withStyles} from "@material-ui/core/styles";
+
 const CardNou = withStyles({
       root: {
         maxWidth: 400,
@@ -34,7 +35,7 @@ class Tutorial extends Component {
   }
 
   render() {
-
+    //const dispatch = useDispatch();
     let {tutorials} = this.props;
     return( <div className="baseContainer">
       <div className="menuLeft">
@@ -56,9 +57,13 @@ class Tutorial extends Component {
 
                  <CardNou>
                    <ButtonBase
-                      onClick={event => {
-                        history.push("/TutorialView")
-                        alert("clicked "+tutorial.title) }}
+                       onClick={() => {
+
+                         history.push({
+                           pathname: '/TutorialView',
+                           state: {tutorial:tutorial}
+                         })
+                        }}
                    >
                    <CardActionArea>
                      <CardMedia
@@ -89,7 +94,6 @@ class Tutorial extends Component {
   }
 
   updateSearchCategory(event) {
-    console.log(event.target.id);
     this.setState({searchCategory:event.target.id})
   }
 }

@@ -1,30 +1,25 @@
 import  React from 'react';
 import Fade from "react-reveal/Fade";
-
+import ReactPlayer from 'react-player'
+import "./TutorialPage.scss"
 export class TutorialPage extends React.Component{
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            tutorial: this.props.tutorial,
-        };
     }
 render(){
-
-            return <div className="baseContainer">
-                    <div className="menuLeft">
-                        <ul className="lista" onClick={(event)=>{this.updateSearchCategory(event)}}>
-                            <li id="Photoshop" className="elementLista">Photoshop</li>
-                            <li id="Lightroom" className="elementLista">Lightroom</li>
-                            <li id="Premiere" className="elementLista">Premiere</li>
-                            <li className="elementLista">After Effects</li>
-                            <li className="elementLista">Illustrator</li>
-                        </ul>
+            const t = this.props.location.state.tutorial;
+            return <div className="baseContainerView">
+                    <div className="part1View">
+                        <h1 className="title">{t.title}</h1>
+                        <div className="video-description">
+                            <ReactPlayer className='react-player' url='https://youtu.be/idEuqizwwUY' width="800px" height="400px"/>
+                            <h1 className="descriptionView">{t.description}</h1>
+                        </div>
                     </div>
-                    <div className="displayElements">
-
-                    </div>
+                <div className="part2View">
+                    <h1 className="downloadText">Want to use tutorial offline? Download photos</h1>
+                </div>
                 </div>
 
 

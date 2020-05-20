@@ -8,12 +8,61 @@ import { Contact } from "./components/Contact/Contact.jsx";
 import { Register } from "./components/Register/Register.jsx";
 import { TutorialPage } from "./components/TutorialPage/TutorialPage.jsx"
 import { Tutorial } from "./components/Tutorial/Tutorial";
+import {AddTutorial} from "./components/Tutorial/AddTutorial/AddTutorial";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { BrowserRouter, NavLink } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 import {history} from "./helpers/index"
+import { withStyles } from '@material-ui/core/styles';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import PersonIcon from '@material-ui/icons/Person';
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+    <Menu
+        elevation={0}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        {...props}
+    />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
+
 
 function App() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <div className="App">
       <div className="menu">
@@ -65,6 +114,43 @@ function App() {
                   Contact
                 </NavLink>
               </li>
+            <li className="li1">
+              <NavLink
+                  to="/Tutorial"
+                  exact
+                  strict
+                  onClick={() => history.push("/Tutorial")}
+                  activeStyle={{ color: "#f0c151" }}
+                  className="menuButtons"
+              >
+                Tutorials
+              </NavLink>
+            </li>
+            <li className="li1">
+              <PersonIcon
+                  fontSize="large"
+                  color="#fafafa"
+                  onClick={handleClick}
+                  className="iconPerson"
+                  hover
+              >
+                Open Menu
+              </PersonIcon>
+              <StyledMenu
+                  id="customized-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+              >
+                <StyledMenuItem onClick={()=>{history.push("/Login"); handleClose()}}>
+                  <ListItemIcon>
+                    <LockOpenIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText primary="Log in"  />
+                </StyledMenuItem>
+              </StyledMenu>
+            </li>
           </ul>
           </BrowserRouter>
         </Fade>
@@ -79,6 +165,7 @@ function App() {
           <Route path="/Register" exact strict component={Register} />
           <Route path="/Tutorial" exact strict component={Tutorial} />
           <Route path="/TutorialView" exact strict component={TutorialPage}/>
+          <Route path="/AddTutorial" exact strict component={AddTutorial}/>
         </Switch>
       </Router>
       <div className="bottom">

@@ -14,6 +14,7 @@ import {
   makeStyles,
   createMuiTheme,
 } from "@material-ui/core/styles";
+import {history} from "../../helpers";
 
 const style = {
   background:
@@ -95,6 +96,11 @@ export class Register extends Component {
           <Button style={style} size="medium" type="submit">
             Register
           </Button>
+          <BrowserRouter>
+            <NavLink to="/Register" exact strict className="nav">
+              <p onClick={()=>history.push("./Login")} className="register">Already a member? Back to login!</p>
+            </NavLink>
+          </BrowserRouter>
         </div>
       </div>
     );

@@ -122,3 +122,10 @@
   color: white;
   text-align: left;
 }
+.iconPerson{
+  transition: 300ms;
+  &:hover{
+    color: #f0c151;
+    cursor: pointer;
+  }
+}
