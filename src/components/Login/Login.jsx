@@ -56,8 +56,26 @@ const CssTextField = withStyles({
 })(TextField);
 
 class Login extends Component {
-  state = {};
-  render() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: '',
+      submitted: false
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({ submitted: true });
+    const { username, password } = this.state;
+    console.log(this.state);
+    if (username && password) {
+      this.props.login(username, password);
+    }
+  }
+  render(){
     return (
       <div className="base-container">
         <div className="content">
@@ -69,6 +87,7 @@ class Login extends Component {
             name="username"
             autoComplete="username"
             color="rgba(255, 105, 135, .3)"
+            onChange={()=>{this.setState({username: document.getElementById("username").value})}}
           />
           <CssTextField
             id="password"
@@ -76,8 +95,9 @@ class Login extends Component {
             type="password"
             autoComplete="current-password"
             color="#ffffff"
+            onChange={()=>{this.setState({password: document.getElementById("password").value})}}
           />
-          <Button style={style} size="medium" type="submit" onClick={()=>(alert("clicked"))}>
+          <Button style={style} size="medium" type="submit" onClick={this.handleSubmit.bind(this)}>
             Login
           </Button>
           <BrowserRouter>

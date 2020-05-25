@@ -21,6 +21,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PersonIcon from '@material-ui/icons/Person';
+import {connect} from "react-redux";
 const StyledMenu = withStyles({
   paper: {
     border: '1px solid #d3d4d5',
@@ -54,11 +55,12 @@ const StyledMenuItem = withStyles((theme) => ({
 
 
 
-function App() {
+export default function App() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -119,7 +121,7 @@ function App() {
                   to="/Tutorial"
                   exact
                   strict
-                  onClick={() => history.push("/Tutorial")}
+                  onClick={() => console.log(this.props.autentication)}
                   activeStyle={{ color: "#f0c151" }}
                   className="menuButtons"
               >
@@ -225,4 +227,8 @@ function App() {
     </div>
   );
 }
-export default App;
+const _App = connect(
+    state => ({
+      authentication: state.authentication
+    })
+)(App);

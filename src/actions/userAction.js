@@ -16,7 +16,7 @@ function login(username, password) {
             .then(
                 jwtToken => {
                     dispatch(success(username, jwtToken));
-                    history.push('/home');
+                    history.push('/');
                     console.log(history);
                 },
                 error => {
