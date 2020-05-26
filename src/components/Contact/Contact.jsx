@@ -2,12 +2,8 @@ import React, { Component } from "react";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import { spacing } from "@material-ui/system";
+import {contactAction} from '../../actions/index'
 import "./Contact.scss";
-import { BrowserRouter, NavLink } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 import {
   fade,
   ThemeProvider,
@@ -15,6 +11,8 @@ import {
   makeStyles,
   createMuiTheme,
 } from "@material-ui/core/styles";
+import {tutorialAction} from "../../actions";
+import {connect} from "react-redux";
 
 const style = {
   borderRadius: 3,
@@ -53,8 +51,24 @@ const CssTextField = withStyles({
   },
 })(TextField);
 
-export class Contact extends Component {
-  state = {};
+class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName:'',
+      lastName:'',
+      email:'',
+      phone:'',
+      comments:''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit() {
+    const { firstName, lastName, email, phone,comments } = this.state;
+    if (firstName && lastName && email && phone && comments) {
+      this.props.addContact(firstName, lastName, email, phone,comments);
+    }
+  }
   render() {
     return (
       <div className="base-containerContact">
@@ -66,6 +80,7 @@ export class Contact extends Component {
             autoComplete="firstname"
             id="first-name"
             color="rgba(255, 105, 135, .3)"
+            onChange={()=>{this.setState({firstName: document.getElementById("first-name").value})}}
           />
           <CssTextField
             margin="normal"
@@ -76,6 +91,7 @@ export class Contact extends Component {
             autoComplete="lastname"
             variant="outlined"
             color="rgba(255, 105, 135, .3)"
+            onChange={()=>{this.setState({lastName: document.getElementById("last-name").value})}}
           />
           <CssTextField
             margin="normal"
@@ -86,6 +102,7 @@ export class Contact extends Component {
             autoComplete="email"
             variant="outlined"
             color="rgba(255, 105, 135, .3)"
+            onChange={()=>{this.setState({email: document.getElementById("email").value})}}
           />
           <CssTextField
             margin="normal"
@@ -96,6 +113,7 @@ export class Contact extends Component {
             autoComplete="phone"
             variant="outlined"
             color="rgba(255, 105, 135, .3)"
+            onChange={()=>{this.setState({phone: document.getElementById("phone").value})}}
           />
           <CssTextField
             margin="normal"
@@ -108,8 +126,9 @@ export class Contact extends Component {
             autoComplete="comments"
             variant="outlined"
             color="rgba(255, 105, 135, .3)"
+            onChange={()=>{this.setState({comments: document.getElementById("comments").value})}}
           />
-          <Button style={style} size="medium" type="submit">
+          <Button style={style} size="medium" type="submit"  onClick={this.handleSubmit.bind(this)}>
             Send
           </Button>
         </div>
@@ -118,4 +137,9 @@ export class Contact extends Component {
   }
 }
 
-export default Contact;
+const actionCreators = {
+  addContact: contactAction.addContact,
+};
+
+const connectedContactPage = connect(null,actionCreators)(Contact);
+export { connectedContactPage as Contact };
