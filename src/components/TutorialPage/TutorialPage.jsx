@@ -19,6 +19,7 @@ render(){
                     </div>
                 <div className="part2View">
                     <h1 className="downloadText">Want to use tutorial offline? Download photos</h1>
+                    <a href="www.google.com" className="downloadText2"> here </a>
                 </div>
                 </div>
 

@@ -56,8 +56,8 @@ const CssTextField = withStyles({
 })(TextField);
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+      super(props);
 
     this.state = {
       username: '',
@@ -70,7 +70,6 @@ class Login extends Component {
     e.preventDefault();
     this.setState({ submitted: true });
     const { username, password } = this.state;
-    console.log(this.state);
     if (username && password) {
       this.props.login(username, password);
     }
@@ -110,6 +109,7 @@ class Login extends Component {
     );
   }
 }
+
 function mapState(state) {
   const { loggingIn } = state.authentication;
   return { loggingIn };
@@ -117,8 +117,7 @@ function mapState(state) {
 
 const actionCreators = {
   login: userAction.login,
-  logout: userAction.logout
-};
+ };
 
 const connectedLoginPage = connect(mapState, actionCreators)(Login);
 export { connectedLoginPage as Login };

@@ -1,19 +1,19 @@
 import { tutorialConstants } from "../constants";
-import { tutorialService } from "../service";
+import {tutorialService, userService} from "../service";
+import {history} from "../helpers";
 
 export const tutorialAction = {
   getAllTutorials,
-  selectTutorial,
+  addTutorial,
 };
 
 function getAllTutorials() {
 
   return (dispatch) => {
     dispatch(request());
-
     tutorialService.getAllTutorials().then(
-      (tutorials) => dispatch(success(tutorials)),
-      (error) => dispatch(failure(error.toString()))
+        (tutorials) => dispatch(success(tutorials)),
+        (error) => dispatch(failure(error.toString()))
     );
   };
 
@@ -26,6 +26,21 @@ function getAllTutorials() {
   function failure(error) {
     return { type: tutorialConstants.GETALL_TUTORIALS_FAILURE, error };
   }
+}
+function addTutorial(title, description, video,archive, photo, category){
+
+  return (dispatch) => {
+    dispatch(request());
+    tutorialService.addTutorial(title,description,video,archive,photo, category).then(
+      history.push("/Tutorial"),
+        alert("Tutorial Sent")
+  );
+
+  };
+  function request() {
+    return { type: tutorialConstants.ADD_TUTORIAL_REQUEST};
+  }
+
 }
 
 export function selectTutorial(tutorial) {

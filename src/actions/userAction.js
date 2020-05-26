@@ -17,13 +17,16 @@ function login(username, password) {
                 jwtToken => {
                     dispatch(success(username, jwtToken));
                     history.push('/');
-                    console.log(history);
                 },
                 error => {
                     dispatch(failure(error.toString()));
                 }
             );
     };
+    function logout() {
+        userService.logout();
+        return { type: userConstants.LOGOUT };
+    }
 
     function request(username, jwtToken) { return { type: userConstants.LOGIN_REQUEST, payload: {username,jwtToken} } }
     function success(username, jwtToken) { return { type: userConstants.LOGIN_SUCCESS, payload: {username,jwtToken} } }

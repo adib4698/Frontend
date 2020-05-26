@@ -36,15 +36,17 @@ class Tutorial extends Component {
 
   render() {
     //const dispatch = useDispatch();
+    {console.log(this.props)}
     let {tutorials} = this.props;
     return( <div className="baseContainer">
       <div className="menuLeft">
+        <p id="Photoshop" className="elementLista" onClick={()=>{history.push("/AddTutorial")}}>Add Tutorial</p>
         <ul className="lista" onClick={(event)=>{this.updateSearchCategory(event)}}>
           <li id="Photoshop" className="elementLista">Photoshop</li>
           <li id="Lightroom" className="elementLista">Lightroom</li>
           <li id="Premiere" className="elementLista">Premiere</li>
-          <li className="elementLista">After Effects</li>
-          <li className="elementLista">Illustrator</li>
+          <li id="AfterEffects" className="elementLista">After Effects</li>
+          <li id="Ilustrator" className="elementLista">Illustrator</li>
         </ul>
       </div>
       <div className="displayElements">

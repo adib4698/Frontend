@@ -55,7 +55,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 
 
-export default function App() {
+function App(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -121,7 +121,7 @@ export default function App() {
                   to="/Tutorial"
                   exact
                   strict
-                  onClick={() => console.log(this.props.autentication)}
+                  onClick={() => history.push("/Tutorial")}
                   activeStyle={{ color: "#f0c151" }}
                   className="menuButtons"
               >
@@ -145,12 +145,21 @@ export default function App() {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
               >
-                <StyledMenuItem onClick={()=>{history.push("/Login"); handleClose()}}>
+                {!props.authentication.loggedIn && <StyledMenuItem onClick={()=>{history.push("/Login"); handleClose()}}>
                   <ListItemIcon>
                     <LockOpenIcon fontSize="small" />
                   </ListItemIcon>
                   <ListItemText primary="Log in"  />
                 </StyledMenuItem>
+                }
+                {props.authentication.loggedIn && <StyledMenuItem onClick={()=>{history.push("/"); handleClose()}}>
+                  <ListItemIcon>
+                    <LockOpenIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText primary="Log out"  />
+                </StyledMenuItem>
+                }
+
               </StyledMenu>
             </li>
           </ul>
@@ -227,8 +236,4 @@ export default function App() {
     </div>
   );
 }
-const _App = connect(
-    state => ({
-      authentication: state.authentication
-    })
-)(App);
+export default connect(({authentication}) => ({authentication}))(App);
